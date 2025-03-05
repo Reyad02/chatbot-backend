@@ -30,15 +30,15 @@ const updateChat = async (messages: IChat) => {
   return result;
 };
 
-const getAllChat = async () => {
-  const result = await Chat.find();
-  return result;
-};
-
 const getSingleChat = async (uniqueIdentifier: string) => {
   const result = await Chat.findOne({
     uniqueIdentifier: uniqueIdentifier,
   });
+  return result;
+};
+
+const getAllChat = async () => {
+  const result = await Chat.find({});
   return result;
 };
 

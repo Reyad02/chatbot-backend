@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ChatValidation } from './chat.validation';
+// import { ChatValidation } from './chat.validation';
 import { chatServices } from './chat.service';
 
 const createChat = async (req: Request, res: Response) => {
@@ -46,7 +46,7 @@ const updateChat = async (req: Request, res: Response) => {
 const getSingleChat = async (req: Request, res: Response) => {
   try {
     const result = await chatServices.getSingleChat(
-      req.body.messagesFullContent?.uniqueIdentifier,
+      req.params?.uniqueIdentifier,
     );
     res.json({
       message: 'Message get successfully',
