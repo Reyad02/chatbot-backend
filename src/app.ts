@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-// import router from './app/routes';
+import router from './app/routes';
 const app = express();
 
 app.use(express.json());
@@ -11,7 +11,7 @@ app.use(
   }),
 );
 
-// app.use('/api', router);
+app.use('/api', router);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello world');
