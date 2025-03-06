@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
-// import { ChatValidation } from './chat.validation';
+import { ChatValidation } from './chat.validation';
 import { chatServices } from './chat.service';
 
 const createChat = async (req: Request, res: Response) => {
   try {
-    const result = await chatServices.createChat(req.body.messagesFullContent);
+    const parseMsgContent = ChatValidation.chatSchema.parse(req.body.messagesFullContent)
+    const result = await chatServices.createChat(parseMsgContent);
     res.json({
       message: 'Messages created successfully',
       success: true,
